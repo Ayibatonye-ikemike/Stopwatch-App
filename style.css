@@ -1,0 +1,408 @@
+/* ========================================
+   CSS RESET & ROOT VARIABLES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Light Theme Colors */
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #2d3748;
+    --text-secondary: #718096;
+    --accent-primary: #4299e1;
+    --accent-hover: #3182ce;
+    --stop-color: #f56565;
+    --stop-hover: #e53e3e;
+    --reset-color: #48bb78;
+    --reset-hover: #38a169;
+    --lap-color: #ed8936;
+    --lap-hover: #dd6b20;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+    --border-color: #e2e8f0;
+}
+
+/* Dark Theme Colors */
+body.dark-theme {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --text-primary: #f7fafc;
+    --text-secondary: #a0aec0;
+    --accent-primary: #63b3ed;
+    --accent-hover: #4299e1;
+    --stop-color: #fc8181;
+    --stop-hover: #f56565;
+    --reset-color: #68d391;
+    --reset-hover: #48bb78;
+    --lap-color: #f6ad55;
+    --lap-hover: #ed8936;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+    --border-color: #4a5568;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+   ======================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px var(--shadow);
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 12px var(--shadow-hover);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   CONTAINER & CARD
+   ======================================== */
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stopwatch-card {
+    background: var(--bg-secondary);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 40px var(--shadow);
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stopwatch-card:hover {
+    box-shadow: 0 15px 50px var(--shadow-hover);
+    transform: translateY(-5px);
+}
+
+/* ========================================
+   TITLE
+   ======================================== */
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   TIMER DISPLAY (Digital Clock Style)
+   ======================================== */
+
+.timer-display {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
+    border-radius: 16px;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    font-family: 'Courier New', monospace;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 3px;
+}
+
+.time-segment {
+    display: inline-block;
+    min-width: 65px;
+}
+
+.separator {
+    margin: 0 5px;
+    animation: blink 1s infinite;
+}
+
+.milliseconds {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-left: 5px;
+}
+
+/* Blinking animation for separator */
+@keyframes blink {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0.3;
+    }
+}
+
+/* ========================================
+   CONTROL BUTTONS
+   ======================================== */
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px var(--shadow);
+    color: #ffffff;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px var(--shadow-hover);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Start Button */
+.btn-start {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
+}
+
+.btn-start:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--accent-hover) 0%, var(--accent-primary) 100%);
+}
+
+/* Stop Button */
+.btn-stop {
+    background: linear-gradient(135deg, var(--stop-color) 0%, var(--stop-hover) 100%);
+}
+
+.btn-stop:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--stop-hover) 0%, var(--stop-color) 100%);
+}
+
+/* Reset Button */
+.btn-reset {
+    background: linear-gradient(135deg, var(--reset-color) 0%, var(--reset-hover) 100%);
+}
+
+.btn-reset:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--reset-hover) 0%, var(--reset-color) 100%);
+}
+
+/* Lap Button */
+.btn-lap {
+    background: linear-gradient(135deg, var(--lap-color) 0%, var(--lap-hover) 100%);
+}
+
+.btn-lap:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--lap-hover) 0%, var(--lap-color) 100%);
+}
+
+/* ========================================
+   LAP TIMES SECTION
+   ======================================== */
+
+.laps-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.laps-container.active {
+    max-height: 300px;
+}
+
+.laps-title {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.laps-list {
+    max-height: 250px;
+    overflow-y: auto;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+}
+
+/* Custom Scrollbar */
+.laps-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.laps-list::-webkit-scrollbar-track {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+.laps-list::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 10px;
+}
+
+.laps-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+.lap-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-primary);
+    box-shadow: 0 2px 4px var(--shadow);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.lap-number {
+    font-weight: 700;
+    color: var(--accent-primary);
+    font-size: 1rem;
+}
+
+.lap-time {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 480px) {
+    .stopwatch-card {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .timer-display {
+        font-size: 2rem;
+        padding: 20px 15px;
+        letter-spacing: 2px;
+    }
+
+    .time-segment {
+        min-width: 45px;
+    }
+
+    .milliseconds {
+        font-size: 1rem;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .lap-item {
+        padding: 10px 12px;
+    }
+
+    .lap-number,
+    .lap-time {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .timer-display {
+        font-size: 2.5rem;
+    }
+
+    .time-segment {
+        min-width: 55px;
+    }
+}

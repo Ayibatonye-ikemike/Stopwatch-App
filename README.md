@@ -66,18 +66,7 @@ Stopwatch-App/
 - **Responsive**: Mobile-first approach with media queries
 - **Modern Design**: Gradients, shadows, and hover effects
 
-## 🎯 Grading Rubric Coverage
-
-| Criteria | Implementation | Points |
-|----------|---------------|--------|
-| HTML Structure | Semantic tags, proper elements, accessibility | 10/10 |
-| CSS Styling | Modern layout, colors, fully responsive | 10/10 |
-| JavaScript Functionality | All core features + bonus features | 20/20 |
-| Code Quality | Commented, indented, proper naming | 5/5 |
-| Creativity & Bonus | Milliseconds, laps, theme toggle, keyboard shortcuts | 5/5 |
-| **Total** | | **50/50** |
-
-## 🌐 Browser Compatibility
+##  Browser Compatibility
 
 - Chrome ✅
 - Firefox ✅
@@ -92,7 +81,3 @@ Stopwatch-App/
 - Lap times are displayed newest-first
 - All buttons have appropriate disabled states
 - Fully accessible with ARIA labels
-
----
-
-**Built with ❤️ for the exam project**
